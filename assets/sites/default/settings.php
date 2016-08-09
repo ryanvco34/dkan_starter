@@ -122,6 +122,7 @@ switch(ENVIRONMENT) {
     $conf['features_master_temp_enabled_modules'] = array(
       'dblog',
       'devel',
+      'dkan_default_content',
       // This is temporary, there's a recline dependency on field_ui that
       // needs to be removed. See https://github.com/NuCivic/recline/pull/34
       // When the above is merged, unconment the following line and update
