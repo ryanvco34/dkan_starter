@@ -1,7 +1,7 @@
-DKAN Open Data Portal
+DKAN Starter Documentation
 =====================
 
-This is the central site for technical/developer documentation of DKAN.
+This is the central site for DKAN Starter documentation.
 
 Table of Contents
 
