@@ -1,17 +1,12 @@
-Welcome to Data Starter's documentation!
-========================================
+DKAN Open Data Portal
+=====================
 
-Contents:
+This is the central site for technical/developer documentation of DKAN.
+
+Table of Contents
 
 .. toctree::
    :maxdepth: 2
 
-
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
-
+   introduction/index
+   common_tasks/index
