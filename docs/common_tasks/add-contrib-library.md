@@ -12,3 +12,9 @@ libraries[angular][download][type] = git
 libraries[angular][download][url] = "https://github.com/angular/angular.git"
 libraries[angular][download][tag] = "2.0.0"
 ```
+# Add to the project
+Run: 
+```
+ahoy build custom-libs
+```
+That should put the **angular** library at **docroot/sites/all/libraries/angular**
