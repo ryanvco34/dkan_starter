@@ -22,3 +22,9 @@ Add the module to the custom_config.features.features_master.inc file:
 $features_master = data_config_enabled_modules();
 $features_master['modules']['sharethis'] = 'sharethis',
 ```
+## Remake the project
+Run: 
+```
+ahoy build custom
+```
+That should put the **sharethis** module at **docroot/sites/all/modules/contrib.**
