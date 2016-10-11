@@ -14,10 +14,8 @@ config/tests/features/
 |-- custom.feature
 ```
 ### Example Test: 
-
- ```
-config/tests/features/custom.feature
- 
+#### config/tests/features/custom.feature
+ ``` 
 Feature: Custom Example
   @api
   Scenario: See custom about page
