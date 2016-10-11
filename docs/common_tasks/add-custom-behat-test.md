@@ -23,3 +23,19 @@ Feature: Custom Example
     When I click "Datasets"
     Then I should see "Content Types"
  ```
+### Example bethat.custom.yml:
+#### config/tests/behat.custom.yml
+```
+# behat.yml
+default:
+  suites:
+    custom:
+      paths:
+        - %paths.base%/../config/tests/features
+      contexts:
+        - CustomContext
+        - FeatureContext #Temporary overrides only!
+        - Drupal\DrupalExtension\Context\MinkContext
+        - Drupal\DrupalExtension\Context\DrupalContext
+        - Drupal\DrupalExtension\Context\MessageContex
+```
