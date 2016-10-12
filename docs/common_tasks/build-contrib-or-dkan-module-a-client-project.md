@@ -38,3 +38,6 @@ Lets say you are working on a module which adds [hover-bear](http://fakeplus.com
   1. **rm -r docroot/sites/all/modules/contrib/dkan_hover_bears**
 3. **CLone the module**
   1. **git clone git@github.com:NuCivic/dkan_hover_bears.git**
+4. **Commit local changes**
+  1. cd into **docroot/sites/all/modules/contrib/dkan_hover_bears**
+  2. commit changes
