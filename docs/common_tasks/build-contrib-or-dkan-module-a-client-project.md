@@ -1,4 +1,5 @@
 # Build a "Contributed" or "DKAN" Module in a Client Project
+## Workflow
 The best workflow for this is to:
 
 1. **Add the module:** as if it was just another "contributed" module: Add a contributed module
