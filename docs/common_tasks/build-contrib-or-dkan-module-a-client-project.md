@@ -34,3 +34,5 @@ Lets say you are working on a module which adds [hover-bear](http://fakeplus.com
     projects[dkan_dkan_hover_bears][download][url] = https://github.com/NuCivic/dkan_dkan_hover_bears.git
     projects[dkan_dkan_hover_bears][download][branch] = civic-12311-hover-bear-stare
     ```
+2. **Delete the module**
+  1. **rm -r docroot/sites/all/modules/contrib/dkan_hover_bears**
