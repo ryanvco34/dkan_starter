@@ -13,3 +13,6 @@ The best workflow for this is to:
     1. When you are ready to reflect that local changes in the client repo update the reference in custom.make
   2. run **ahoy build custom**
     1. Changes should then appear in the module in **docroot/sites/all/modules/contrib**
+    
+## Example 
+Lets say you are working on a module which adds [hover-bear](http://fakeplus.com/pictures/jpg/-hover-bear_20120503062245.jpg) functionality to a client project and the module lives at http://github.com/nucivic/dkan_hover_bears.
