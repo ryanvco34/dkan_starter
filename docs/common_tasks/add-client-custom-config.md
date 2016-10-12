@@ -13,4 +13,7 @@ module if you don't understand what this means).
 However, there's a few caveats:
 
 1. If you add something custom to the site, you need to make sure it gets tested every time new code gets added to the project (on a Pull Request).
-* It doesn't need to be the fanciest behat test, something like this will do -> [It doesn't need to be the fanciest behat test, something like this will do -> https://github.com/NuCivic/data_starter_private/blob/master/tests/features/general.feature](https://github.com/NuCivic/data_starter_private/blob/master/tests/features/general.feature)
+  1. It doesn't need to be the fanciest behat test, something like this will do -> [It doesn't need to be the fanciest behat test, something like this will do -> https://github.com/NuCivic/data_starter_private/blob/master/tests/features/general.feature](https://github.com/NuCivic/data_starter_private/blob/master/tests/features/general.feature)
+  2. Create a behat feature file for your tests (name it appropriately)
+  3. Look at the **circle.yml** recipe to see if it's setup to run that behat feature
+
