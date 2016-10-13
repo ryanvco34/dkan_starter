@@ -25,3 +25,4 @@ All of the development for DKAN Starter implementers is done in the ``config/`` 
    dkan-starter-annotated
    getting-started
    creating-a-new-project
+   releases
