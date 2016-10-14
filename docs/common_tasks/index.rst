@@ -1,12 +1,13 @@
-# Common Development Tasks (WIP)
+Common Development Tasks (WIP)
+----------
 
 These are common development tasks.
 
 
 **Table of Contents**
-
+====
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
 
    theming/index
