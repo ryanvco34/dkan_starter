@@ -1,7 +1,12 @@
 Common Development Tasks (WIP)
 ----------------------
 
-. toctree::
-   :maxdepth: 1
+These are common development tasks.
 
-   Theming <theming/index>
+### Table of Contents
+
+.. toctree::
+   :maxdepth: 2
+
+   introduction/index
+   common_tasks/index
