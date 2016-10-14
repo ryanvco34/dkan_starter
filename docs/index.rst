@@ -24,3 +24,4 @@ Table of Contents
 
    introduction/index
    common_tasks/index
+   docker-dev-env/index
