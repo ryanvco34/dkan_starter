@@ -31,4 +31,12 @@ function data_config_update_7002() {
     'dkan_harvest_dashboard',
     'menu_admin_per_menu',
   ));
+
+  // Disable modules.
+  module_disable(array(
+    'dkan_sitewide_demo_front',
+    'menu_token',
+    'remote_file_source',
+    'update',
+  ));
 }
