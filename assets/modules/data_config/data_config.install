@@ -7,3 +7,28 @@ function data_config_update_7001() {
   module_disable(array("dkan_default_content"));
   drupal_uninstall_modules(array("dkan_default_content"));
 }
+
+/**
+ * Run 1.12 to 1.13 upgrade steps.
+ */
+function data_config_update_7002() {
+  $modules = array(
+    'dkan_dataset_content_types',
+    'dkan_permissions',
+    'open_data_federal_extra',
+  );
+
+  foreach ($modules as $modules) {
+    if (module_exists($module)) {
+      features_revert_module($module);
+    }
+  }
+
+  dkan_sitewide_convert_panel_page('page-front_page');
+
+  module_enable(array(
+    'dkan_ipe',
+    'dkan_harvest_dashboard',
+    'menu_admin_per_menu',
+  ));
+}
