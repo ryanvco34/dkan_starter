@@ -17,7 +17,9 @@ use Behat\Behat\Tester\Exception\PendingException;
 use EntityFieldQuery;
 use \stdClass;
 use Behat\Behat\Hook\Scope\BeforeScenarioScope;
-
+use Behat\Behat\Hook\Scope\BeforeStepScope;
+use Behat\Testwork\Hook\Scope\BeforeSuiteScope;
+use Behat\Testwork\Hook\Scope\AfterSuiteScope;
 /**
  * Defines application features from the specific context.
  */
@@ -54,6 +56,23 @@ class RawDKANContext extends RawDrupalContext implements DKANAwareInterface {
    */
   protected $fakeSession;
 
+  protected $old_global_user;
+
+  /**
+   * @BeforeSuite
+   */
+  public static function disableAdminMenuCache(BeforeSuiteScope $scope) {
+    // Turn off cache so the menu lives in the html.
+    variable_set('admin_menu_cache_client', FALSE);
+  }
+
+  /**
+   * @AfterSuite
+   */
+  public static function enableAdminMenuCache(AfterSuiteScope $scope) {
+    variable_set('admin_menu_cache_client', TRUE);
+  }
+
   /**
    * @BeforeScenario @disablecaptcha
    */
@@ -72,6 +91,31 @@ class RawDKANContext extends RawDrupalContext implements DKANAwareInterface {
     captcha_set_form_id_setting('feedback_node_form', 'none');
     captcha_set_form_id_setting('comment_node_feedback_form', 'none');
   }
+
+  /**
+   * @BeforeStep
+   */
+  public function populateGlobalUser(BeforeStepScope $scope)
+  {
+    if ($this->scenario->hasTag('globalUser')) {
+      if($this->getCurrentUser()) {
+        global $user;
+        $user = $this->getCurrentUser();
+        if(property_exists($user, 'role') && $user->role === 'authenticated user') {
+          $user->roles = array( 2 =>'authenticated user');
+        }
+      }
+    }
+  }
+
+  /**
+   * @BeforeScenario
+   */
+   public function registerScenario(BeforeScenarioScope $scope) {
+     // Scenario not usually available to steps, so we do ourselves.
+     // See issue
+     $this->scenario = $scope->getScenario();
+   }
 
   /**
    * @AfterScenario @disablecaptcha
@@ -144,7 +188,11 @@ class RawDKANContext extends RawDrupalContext implements DKANAwareInterface {
   public function getCurrentUser() {
     //Rely on DrupalExtension to keep track of the current user.
     // Disable notice when author is not present
-    return @$this->drupalContext->user;
+    try {
+      return @$this->drupalContext->user;
+    } catch (Exception $e) {
+      return FALSE;
+    }
   }
 
   public function visitPage($named_page, $sub_path = null) {
@@ -230,7 +278,7 @@ class RawDKANContext extends RawDrupalContext implements DKANAwareInterface {
   /**
    * Check if module exists and can be enabled.
    *
-   * Simply using drupal's modoule_exists() function will not work here because 
+   * Simply using drupal's module_exists() function will not work here because
    * we are potentially enabling modules that may not even be in the code base.
    */
   protected static function shouldEnableModule($module = "") {
