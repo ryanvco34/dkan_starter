@@ -8,11 +8,9 @@ includes[core] = drupal-org-core.make
 projects[dkan][type] = profile
 projects[dkan][download][type] = git
 projects[dkan][download][url] = https://github.com/NuCivic/dkan.git
-projects[dkan][download][tag] = 7.x-1.13-beta1
+projects[dkan][download][tag] = 7.x-1.13-beta2
 
 ; Un-comment if diff is not empty.
 ;projects[dkan][patch][1] = https://github.com/NuCivic/dkan/compare/7.x-1.13-beta1...release-1-12.diff
 
-; Add suites patch
-projects[dkan][patch][1394] = https://patch-diff.githubusercontent.com/raw/NuCivic/dkan/pull/1394.diff 
 

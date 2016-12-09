@@ -36,16 +36,42 @@ Develop [![Build Status](https://travis-ci.org/adamwdraper/Numeral-js.svg?branch
 8. Submit a pull request to the `develop` branch.
 
 
-### Languages
+### Locales
 
-When naming language files use the [ISO 639-1 language codes](http://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) supplemented by [ISO 3166-1](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) country codes when necessary.
+When naming locale files use the [ISO 639-1 language codes](http://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) supplemented by [ISO 3166-1](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) country codes when necessary.
 
-### Language translations will not be merged without unit tests.
+### Locale translations will not be merged without unit tests.
 
-See [the english unit tests](https://github.com/adamwdraper/Numeral-js/blob/master/tests/languages/en-gb.js) for an example.
+See [the english unit tests](https://github.com/adamwdraper/Numeral-js/blob/master/tests/locales/en-gb.js) for an example.
 
 
 # Changelog
+
+### 2.0.1
+
+Bug fix: Fixed regression for webpack/browserify/rollup
+
+### 2.0.0
+
+2.0.0 brings a lot of breaking changes and a reorganization of the repo, but also simplifies the api as well as the creating of custom formats.
+
+Breaking change / Feature: All formats are now separate files.  This makes it easy to create custom formats, and will also allow for custom builds with only certain formats.  (Note: The built numeral.js still contains all formats in the repo).
+
+Breaking change / Feature: All formats and locales are now loaded using `numeral.register(type, name, {})`
+
+Breaking change: All `language` now renamed to `locale` and standardized to all lowercase filenames
+
+Breaking change: The `locale` function no longer loads locales, it only sets the current locale
+
+Breaking change: The `unformat` function has been removed `numeral().unformat(string)` and now happens on numeral init `numeral(string)`
+
+Breaking change / Feature: Bytes are now formatted as: `b` (base 1000)  and `ib` (base 1024)
+
+Breaking change: `numeral(NaN)` is now treated the same as `numeral(null)` and no longer throws an error
+
+Feature: Exponential format using `e+` or `e-`
+
+Bug fix: Update to floating point helpers (Note: Numeral does not fix JS floating point errors, but look to our tests to see that it covers quite a few cases.)
 
 ### 1.5.6
 
