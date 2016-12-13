@@ -273,7 +273,9 @@ function file_default_scheme() {
  *   The normalized URI.
  */
 function file_stream_wrapper_uri_normalize($uri) {
-  $scheme = file_uri_scheme($uri);
+  // Inline file_uri_scheme() function call for performance reasons.
+  $position = strpos($uri, '://');
+  $scheme = $position ? substr($uri, 0, $position) : FALSE;
 
   if ($scheme && file_stream_wrapper_valid_scheme($scheme)) {
     $target = file_uri_target($uri);
@@ -598,7 +600,14 @@ function file_load($fid) {
  */
 function file_save(stdClass $file) {
   $file->timestamp = REQUEST_TIME;
-  $file->filesize = filesize($file->uri);
+
+  // We can't use filesize() because that doesn't handle remote streams.
+  if ($wrapper = file_stream_wrapper_get_instance_by_uri($file->uri)) {
+    $wrapper->stream_open($file->uri, 'r', NULL, $file->uri);
+    $fstat = $wrapper->stream_stat();
+    $wrapper->stream_close();
+    $file->filesize = $fstat['size'];
+  }
 
   // Load the stored entity, if any.
   if (!empty($file->fid) && !isset($file->original)) {
